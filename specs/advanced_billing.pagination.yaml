@@ -1,0 +1,40 @@
+# Which operations get a paginated <name>_all method, and how they page. Maxio numbers its
+# pages from 1 (page, per_page) and answers past the last one with an empty list. Rules are
+# tried in order, and generate.py prints how many operations each matched.
+- name: arrays
+  # [{"subscription": {...}}, ...]: the body is the page
+  response: array
+  has_parameter: [page, per_page]
+  paginate: {type: page, size: per_page}
+- name: metafields
+  # {"metafields": [...], "total_pages": 3, ...}: total_pages ends these three
+  has_parameter: [page, per_page]
+  response: {has: [metafields, total_pages]}
+  paginate: {type: page, size: per_page, total_pages: total_pages, items: metafields}
+- name: metadata
+  has_parameter: [page, per_page]
+  response: {has: [metadata, total_pages]}
+  paginate: {type: page, size: per_page, total_pages: total_pages, items: metadata}
+- name: invoice events
+  has_parameter: [page, per_page]
+  response: {has: [events, total_pages]}
+  paginate: {type: page, size: per_page, total_pages: total_pages, items: events}
+# {"<items>": [...]} or {"<items>": [...], "meta": {...}}: one rule per list key; the short
+# page (fewer than per_page items) or an empty one ends them
+- {name: invoices, has_parameter: [page, per_page], response: {has: [invoices]}, paginate: {type: page, size: per_page, items: invoices}}
+- {name: credit notes, has_parameter: [page, per_page], response: {has: [credit_notes]}, paginate: {type: page, size: per_page, items: credit_notes}}
+- {name: proforma invoices, has_parameter: [page, per_page], response: {has: [proforma_invoices]}, paginate: {type: page, size: per_page, items: proforma_invoices}}
+- {name: price points, has_parameter: [page, per_page], response: {has: [price_points]}, paginate: {type: page, size: per_page, items: price_points}}
+- {name: coupon codes, has_parameter: [page, per_page], response: {has: [codes]}, paginate: {type: page, size: per_page, items: codes}}
+- {name: segments, has_parameter: [page, per_page], response: {has: [segments]}, paginate: {type: page, size: per_page, items: segments}}
+- {name: feature templates, has_parameter: [page, per_page], response: {has: [items, total_count]}, paginate: {type: page, size: per_page, items: items}}
+- {name: offers, has_parameter: [page, per_page], response: {has: [offers]}, paginate: {type: page, size: per_page, items: offers}}
+- {name: Chargify.js keys, has_parameter: [page, per_page], response: {has: [chargify_js_keys]}, paginate: {type: page, size: per_page, items: chargify_js_keys}}
+- {name: subscription components, has_parameter: [page, per_page], response: {has: [subscriptions_components]}, paginate: {type: page, size: per_page, items: subscriptions_components}}
+- {name: subscription groups, has_parameter: [page, per_page], response: {has: [subscription_groups]}, paginate: {type: page, size: per_page, items: subscription_groups}}
+- {name: prepayments, has_parameter: [page, per_page], response: {has: [prepayments]}, paginate: {type: page, size: per_page, items: prepayments}}
+- {name: service credits, has_parameter: [page, per_page], response: {has: [service_credits]}, paginate: {type: page, size: per_page, items: service_credits}}
+- {name: MRR per subscription, has_parameter: [page, per_page], response: {has: [subscriptions_mrr]}, paginate: {type: page, size: per_page, items: subscriptions_mrr}}
+- {name: wallets, has_parameter: [page, per_page], response: {has: [wallets]}, paginate: {type: page, size: per_page, items: wallets}}
+- {name: wallet transactions, has_parameter: [page, per_page], response: {has: [wallet_transactions]}, paginate: {type: page, size: per_page, items: wallet_transactions}}
+- {name: wallet products, has_parameter: [page, per_page], response: {has: [wallet_products]}, paginate: {type: page, size: per_page, items: wallet_products}}

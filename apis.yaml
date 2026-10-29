@@ -1,0 +1,15 @@
+# The API this package generates a client for. scripts/generate.py reads it; edit it and
+# regenerate (`uv run python scripts/generate.py --fetch`), never the generated code.
+package: maxio_apiroute
+apis:
+  - name: advanced_billing
+    title: Maxio Advanced Billing API (formerly Chargify)
+    format: openapi
+    # the OpenAPI 3.1 export of Maxio's developer portal, the definition its SDKs are built from
+    spec: https://developers.maxio.com/static/exports/maxio-advanced-billing-openapi31json.json
+    docs: https://developers.maxio.com/http/getting-started/overview
+    module: advanced_billing
+    client: AdvancedBillingApi
+    base_class: maxio_apiroute.auth:MaxioAuth
+    # list operations gain <name>_all methods iterating every page
+    pagination: specs/advanced_billing.pagination.yaml

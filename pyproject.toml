@@ -1,0 +1,59 @@
+[project]
+name = "maxio-apiroute"
+dynamic = ["version"]  # from the git tag (hatch-vcs): every merge to main is tagged and released
+description = "A Python client for Maxio Advanced Billing (formerly Chargify), generated with apiroute from Maxio's published OpenAPI spec: sync and async, typed pydantic models."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Doug Youch", email = "dougyouch@gmail.com" }]
+requires-python = ">=3.10"
+keywords = ["maxio", "chargify", "billing", "subscriptions", "api", "client", "openapi", "httpx", "async", "pydantic"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Office/Business :: Financial",
+    "Typing :: Typed",
+]
+dependencies = ["apiroute>=2.6.0", "pydantic>=2.6"]
+
+[project.urls]
+Homepage = "https://github.com/dougyouch/maxio-apiroute"
+Repository = "https://github.com/dougyouch/maxio-apiroute"
+Issues = "https://github.com/dougyouch/maxio-apiroute/issues"
+Changelog = "https://github.com/dougyouch/maxio-apiroute/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = ["apiroute[codegen]>=2.6.0", "pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/maxio_apiroute"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["specs"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["specs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
