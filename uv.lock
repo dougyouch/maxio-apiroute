@@ -27,14 +27,14 @@ wheels = [
 
 [[package]]
 name = "apiroute"
-version = "2.6.0"
+version = "2.6.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/2b/8d/d4675f353a8bb9d2f93c0835c2b4212f3d592c5805871a693c8ce8f9c4dd/apiroute-2.6.0.tar.gz", hash = "sha256:34d0c2f2c1e88ac490dc170f4ba521488b5e6ead282b200828f1ea2a79f66fef", size = 410027, upload-time = "2026-10-28T23:55:23.669Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/76/e6/a2bd43a47d975d6575a311edbe043b784c026e1512640884875d46356ee7/apiroute-2.6.1.tar.gz", hash = "sha256:fc19e6b206eee6f69ddfb4f2892f88efd62b98901015dd8c33b82c640d195804", size = 410495, upload-time = "2026-10-29T00:56:56.054Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0e/18/cc7dc099ce06523afc6b677db5b69d6319929be5b00d5e66f55482faf639/apiroute-2.6.0-py3-none-any.whl", hash = "sha256:8968531ba290473403956c34342f6df6a749bbe3666126a64419b3ec8ae7c1e1", size = 214018, upload-time = "2026-10-28T23:55:22.171Z" },
+    { url = "https://files.pythonhosted.org/packages/3b/5b/bc525abf84f8f188f84084b89556de2b79231a7ee66766ab300b9a199c82/apiroute-2.6.1-py3-none-any.whl", hash = "sha256:d19700f42751adae95e9248053d370ab748d2bf540cf5bce68d4b3fc7cbe94cc", size = 214065, upload-time = "2026-10-29T00:56:54.62Z" },
 ]
 
 [package.optional-dependencies]
